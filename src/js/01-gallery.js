@@ -1,8 +1,10 @@
-import { galleryItems } from "./gallery-items.js";
+import { galleryItems } from './gallery-items.js';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 // Change code below this line
 
 function buildGallery(items) {
-  const galleryElement = document.querySelector(".gallery");
+  const galleryElement = document.querySelector('.gallery');
   const galleryMarkup = items
     .map(({ preview, original, description }) => {
       return `
@@ -14,25 +16,25 @@ function buildGallery(items) {
     `;
     })
 
-    .join("");
+    .join('');
 
   galleryElement.innerHTML = galleryMarkup;
 }
 
 buildGallery(galleryItems);
 
-const gallery = document.querySelector(".gallery");
+const gallery = document.querySelector('.gallery');
 
-gallery.addEventListener("click", (e) => {
+gallery.addEventListener('click', e => {
   e.preventDefault();
-  if (e.target.nodeName !== "IMG") {
+  if (e.target.nodeName !== 'IMG') {
     return;
   }
 
   const instance = basicLightbox
     .create(
       `
-		<img width="1400" height="900" src="${e.target.getAttribute("data-source")}">
+		<img width="1400" height="900" src="${e.target.getAttribute('data-source')}">
 	`
     )
     .show();
