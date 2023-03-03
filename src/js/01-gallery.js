@@ -9,9 +9,9 @@ function buildGallery(items) {
     .map(({ preview, original, description }) => {
       return `
       <div class="gallery__item">
-        <a class="gallery__link" href="${original}">
-          <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" />
-        </a>
+      <a class="gallery__item" href="${original}">
+      <img class="gallery__image" src="${preview}" alt="${description}" />
+      </a>
       </div>
     `;
     })
@@ -23,19 +23,7 @@ function buildGallery(items) {
 
 buildGallery(galleryItems);
 
-const gallery = document.querySelector('.gallery');
-
-gallery.addEventListener('click', e => {
-  e.preventDefault();
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  const instance = basicLightbox
-    .create(
-      `
-		<img width="1400" height="900" src="${e.target.getAttribute('data-source')}">
-	`
-    )
-    .show();
+const gallery = new SimpleLightbox(`.gallery a`, {
+  captionsData: 'alt',
+  captionDelay: 250,
 });
