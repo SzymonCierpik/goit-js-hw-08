@@ -1,2 +1,0 @@
-const e=document.querySelector(".feedback-form"),t=e.querySelector('input[name="email"]'),a=e.querySelector('textarea[name="message"]'),n=_.throttle((()=>{t.value,a.value}),500);t.addEventListener("input",n),a.addEventListener("input",n),e.addEventListener("submit",(e=>{e.preventDefault(),console.log("Form submitted:",{email:t.value,message:a.value})}));
-//# sourceMappingURL=03-feedback.17c2a2f3.js.map
